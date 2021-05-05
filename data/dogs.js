@@ -45,7 +45,7 @@ const dogs = [
     typ: 'Schnauzer mix',
     url: '',
     year: 1914,
-    tvShow: 'The Lady and the Tramp',
+    tvShow: 'The Lady and the Tramp,
     isSidekick: false
   },
   {
