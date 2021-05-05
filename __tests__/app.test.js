@@ -20,7 +20,7 @@ describe('API Routes', () => {
       id: expect.any(Number),
       name: 'Scooby Doo',
       type: 'Great Dane',
-      url: '',
+      url: 'scooby-doo.jpeg',
       year: 1969,
       tvShow: 'Scooby Doo, Where are you?',
       isSidekick: true
@@ -64,7 +64,7 @@ describe('API Routes', () => {
     {
       id: expect.any(Number),
       name: 'Tramp',
-      typ: 'Schnauzer mix',
+      type: 'Schnauzer mix',
       url: '',
       year: 1914,
       tvShow: 'The Lady and the Tramp',
