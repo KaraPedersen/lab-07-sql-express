@@ -40,7 +40,7 @@ describe('API Routes', () => {
       type: 'German Shepherd',
       url: '',
       year: 2008,
-      tvShow: Bolt,
+      tvShow: 'Bolt',
       isSidekick: false
     },
     {
