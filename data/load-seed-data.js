@@ -17,7 +17,7 @@ async function run() {
         `,
 
           // eslint-disable-next-line indent
-          [dog.name, dog.type, dog.url, dog.year, dog.tvshow, dog.isSidekick]);
+          [dog.name, dog.type, dog.url, dog.year, dog.tvShow, dog.isSidekick]);
       })
     );
 
