@@ -1,9 +1,10 @@
 // example seed data
+
 const dogs = [
   {
     name: 'Scooby Doo',
     type: 'Great Dane',
-    url: '',
+    url: 'scooby-doo.jpeg',
     year: 1969,
     tvShow: 'Scooby Doo, Where are you?',
     isSidekick: true
@@ -21,7 +22,7 @@ const dogs = [
     type: 'German Shepherd',
     url: '',
     year: 2008,
-    tvShow: Bolt,
+    tvShow: 'Bolt',
     isSidekick: false
   },
   {
@@ -42,10 +43,10 @@ const dogs = [
   },
   {
     name: 'Tramp',
-    typ: 'Schnauzer mix',
+    type: 'Schnauzer mix',
     url: '',
     year: 1914,
-    tvShow: 'The Lady and the Tramp,
+    tvShow: 'The Lady and the Tramp',
     isSidekick: false
   },
   {

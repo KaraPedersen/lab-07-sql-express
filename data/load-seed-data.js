@@ -15,7 +15,9 @@ async function run() {
           INSERT INTO dogs (name, type, url, year, tv_show, is_sidekick)
           VALUES ($1, $2, $3, $4, $5, $6);
         `,
-          [dog.name, dog.type, dog.url, dog.year, dog.tvshow, dog.isSidekick]);
+
+          // eslint-disable-next-line indent
+          [dog.name, dog.type, dog.url, dog.year, dog.tvShow, dog.isSidekick]);
       })
     );
 
