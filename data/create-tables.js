@@ -18,8 +18,8 @@ async function run() {
         year 1931 NOT NULL,
         tv_show MICKEY_MOUSE_CLUBHOUSE INTEGER NOT NULL,
         is_sidekick BOOLEAN DEFAULT FALSE
-      );
-    `);
+    );`
+    );
 
     console.log('create tables complete');
   }
