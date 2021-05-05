@@ -5,7 +5,7 @@ const dogs = [
     type: 'Great Dane',
     url: '',
     year: 1969,
-    tv show: 'Scooby Doo, Where are you?',
+    tvShow: 'Scooby Doo, Where are you?',
     isSidekick: true
   },
   {
@@ -13,7 +13,7 @@ const dogs = [
     type: 'Bloodhound',
     url: '',
     year: 1931,
-    tv show: 'Mickey Mouse Clubhouse',
+    tvShow: 'Mickey Mouse Clubhouse',
     isSidekick: true
   },
   {
@@ -21,7 +21,7 @@ const dogs = [
     type: 'German Shepherd',
     url: '',
     year: 2008,
-    tv show: Bolt,
+    tvShow: Bolt,
     isSidekick: false
   },
   {
@@ -29,7 +29,7 @@ const dogs = [
     type: 'Beagle',
     url: '',
     year: 1978,
-    tv show: 'Charlie Brown and Snoopy',
+    tvShow: 'Charlie Brown and Snoopy',
     isSidekick: true
   },
   {
@@ -37,7 +37,7 @@ const dogs = [
     type: 'Dachshund & Terrier Mix',
     url: '',
     year: 1978,
-    tv show: 'The Garfield Show',
+    tvShow: 'The Garfield Show',
     isSidekick: true
   },
   {
@@ -45,7 +45,7 @@ const dogs = [
     typ: 'Schnauzer mix',
     url: '',
     year: 1914,
-    tv show: 'The Lady and the Tramp',
+    tvShow: 'The Lady and the Tramp,
     isSidekick: false
   },
   {
@@ -53,7 +53,7 @@ const dogs = [
     type: 'Coonhound',
     url: '',
     year: 1939,
-    tv show: 'Goof Troup',
+    tvShow: 'Goof Troup',
     isSidekick: true
   },
   {
@@ -61,9 +61,8 @@ const dogs = [
     type: 'Great Dane',
     url: '',
     year: 1979,
-    tv show: 'Scooby Doo',
+    tvShow: 'Scooby Doo',
     isSidekick: true
   }
 ];
-
-export default cats;
+export default dogs;
