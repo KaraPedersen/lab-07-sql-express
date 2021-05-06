@@ -18,6 +18,18 @@ describe('API Routes', () => {
     return client.end();
   });
 
+  let user;
+  beforeAll(async () => {
+    execSync('npm run recreate-tables');
+    const response = await request
+    .post('/api/auth/signup')
+    .send({
+      name: 'Me the User',
+      email: 'me@user.com',
+      passwordHash: 'password'
+    });
+  }
+
   // const expectedDogs = [
   // let ScoobyDoo = {
   //   id: expect.any(Number),
@@ -113,7 +125,7 @@ describe('API Routes', () => {
     tramp = response.body;
   });
 
-  it('PUT updated tramp to /api/dogs/:id', async () => {
+  it.skip('PUT updated tramp to /api/dogs/:id', async () => {
     tramp.tvShow = 'The Lady and the Tramp';
     tramp.name = 'tramp';
 
@@ -127,7 +139,7 @@ describe('API Routes', () => {
 
   });
 
-  it('GET list of dogs from /api/dogs', async () => {
+  it.skip('GET list of dogs from /api/dogs', async () => {
     const r1 = await request.post('/api/dogs').send(snoopy);
     snoopy = r1.body;
     const r2 = await request.post('/api/dogs').send(goofy);
@@ -139,14 +151,14 @@ describe('API Routes', () => {
     expect(response.body).toEqual(expect.arrayContaining([tramp, snoopy, goofy]));
   });
 
-  it('GET snoopy from /api/dogs/:id', async () => {
+  it.skip('GET snoopy from /api/dogs/:id', async () => {
     const response = await request.get(`/api/dogs/${snoopy.id}`);
     expect(response.status).toBe(200);
     expect(response.body).toEqual(snoopy);
   });
 
 
-  it('DELETE goofy from /api/dogs/:id', async () => {
+  it.skip('DELETE goofy from /api/dogs/:id', async () => {
     const response = await request.delete(`/api/dogs/${goofy.id}`);
     expect(response.status).toBe(200);
     expect(response.body).toEqual(goofy);
