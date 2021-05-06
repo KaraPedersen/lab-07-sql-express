@@ -136,6 +136,12 @@ describe('API Routes', () => {
     );
   });
 
+  it('GET snoopy from /api/dogs/:id', async () => {
+    const response = await request.get(`/api/dogs/${snoopy.id}`);
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(snoopy);
+  });
+
 
   it('DELETE goofy from /api/dogs/:id', async () => {
     const response = await request.delete(`/api/dogs/${goofy.id}`);
