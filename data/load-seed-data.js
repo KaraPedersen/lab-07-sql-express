@@ -16,8 +16,8 @@ async function run() {
           VALUES ($1, $2, $3, $4, $5, $6);
         `,
 
-          // eslint-disable-next-line indent
-          [dog.name, dog.type, dog.url, dog.year, dog.tvShow, dog.isSidekick]);
+        // eslint-disable-next-line indent 
+        [dog.name, dog.type, dog.url, dog.year, dog.tvShow, dog.isSidekick]);
       })
     );
 
