@@ -123,6 +123,20 @@ describe('API Routes', () => {
 
   });
 
+  it('GET list of dogs from /api/dogs', async () => {
+    const r1 = await request.post('/api/dogs').send(snoopy);
+    snoopy = r1.body;
+    const r2 = await request.post('/api/dogs').send(goofy);
+    goofy = r2.body;
+
+    const response = await request.get('/api/dogs');
+
+    expect(response.status).toBe(200);
+    expect(response.body).toEqual(expect.arrayContaining([{ 'id': 1, 'isSidekick': true, 'name': 'Scooby Doo', 'tvShow': 'Scooby Doo, Where are you?', 'type': 'Great Dane', 'url': 'scooby-doo.jpeg', 'year': 1969 }, { 'id': 2, 'isSidekick': true, 'name': 'Pluto', 'tvShow': 'Mickey Mouse Clubhouse', 'type': 'Bloodhound', 'url': '', 'year': 1931 }, { 'id': 3, 'isSidekick': false, 'name': 'Bolt', 'tvShow': 'Bolt', 'type': 'German Shepherd', 'url': '', 'year': 2008 }, { 'id': 4, 'isSidekick': true, 'name': 'Snoopy', 'tvShow': 'Charlie Brown and Snoopy', 'type': 'Beagle', 'url': '', 'year': 1978 }, { 'id': 5, 'isSidekick': true, 'name': 'Odie', 'tvShow': 'The Garfield Show', 'type': 'Dachshund & Terrier Mix', 'url': '', 'year': 1978 }, { 'id': 6, 'isSidekick': false, 'name': 'Tramp', 'tvShow': 'The Lady and the Tramp', 'type': 'Schnauzer mix', 'url': '', 'year': 1914 }, { 'id': 7, 'isSidekick': true, 'name': 'Goofy', 'tvShow': 'Goof Troup', 'type': 'Coonhound', 'url': '', 'year': 1939 }, { 'id': 8, 'isSidekick': true, 'name': 'Scrappy Doo', 'tvShow': 'Scooby Doo', 'type': 'Great Dane', 'url': '', 'year': 1979 }, { 'id': 9, 'isSidekick': false, 'name': 'Tramp', 'tvShow': 'The Lady and the Tramp', 'type': 'Schnauzer mix', 'url': '', 'year': 1914 }, { 'id': 10, 'isSidekick': true, 'name': 'Snoopy', 'tvShow': 'Charlie Brown and Snoopy', 'type': 'Beagle', 'url': '', 'year': 1978 }, { 'id': 11, 'isSidekick': true, 'name': 'Goofy', 'tvShow': 'Goof Troup', 'type': 'Coonhound', 'url': '', 'year': 1939 }])
+    );
+  });
+
+
   it('DELETE goofy from /api/dogs/:id', async () => {
     const response = await request.delete(`/api/dogs/${goofy.id}`);
     expect(response.status).toBe(200);
@@ -134,6 +148,8 @@ describe('API Routes', () => {
   });
 
 });
+
+
 
 
 
@@ -175,4 +191,3 @@ it.skip('GET /api/dogs/:id', async () => {
   expect(response.status).toBe(200);
   expect(response.body).toEqual(expectedDogs[1]);
 });
-// });
