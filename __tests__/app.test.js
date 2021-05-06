@@ -11,7 +11,7 @@ describe('API Routes', () => {
   //   execSync('npm run setup-db');
   // });
   beforeAll(() => {
-    execSync('npm run recreate-tables');
+    execSync('npm run setup-db');
   });
 
   afterAll(async () => {
@@ -19,33 +19,33 @@ describe('API Routes', () => {
   });
 
   // const expectedDogs = [
-  let ScoobyDoo = {
-    id: expect.any(Number),
-    name: 'Scooby Doo',
-    type: 'Great Dane',
-    url: 'scooby-doo.jpeg',
-    year: 1969,
-    tvShow: 'Scooby Doo, Where are you?',
-    isSidekick: true
-  };
-  let pluto = {
-    id: expect.any(Number),
-    name: 'Pluto',
-    type: 'Bloodhound',
-    url: '',
-    year: 1931,
-    tvShow: 'Mickey Mouse Clubhouse',
-    isSidekick: true
-  };
-  let bolt = {
-    id: expect.any(Number),
-    name: 'Bolt',
-    type: 'German Shepherd',
-    url: '',
-    year: 2008,
-    tvShow: 'Bolt',
-    isSidekick: false
-  };
+  // let ScoobyDoo = {
+  //   id: expect.any(Number),
+  //   name: 'Scooby Doo',
+  //   type: 'Great Dane',
+  //   url: 'scooby-doo.jpeg',
+  //   year: 1969,
+  //   tvShow: 'Scooby Doo, Where are you?',
+  //   isSidekick: true
+  // };
+  // let pluto = {
+  //   id: expect.any(Number),
+  //   name: 'Pluto',
+  //   type: 'Bloodhound',
+  //   url: '',
+  //   year: 1931,
+  //   tvShow: 'Mickey Mouse Clubhouse',
+  //   isSidekick: true
+  // };
+  // let bolt = {
+  //   id: expect.any(Number),
+  //   name: 'Bolt',
+  //   type: 'German Shepherd',
+  //   url: '',
+  //   year: 2008,
+  //   tvShow: 'Bolt',
+  //   isSidekick: false
+  // };
   let snoopy = {
     id: expect.any(Number),
     name: 'Snoopy',
@@ -55,15 +55,15 @@ describe('API Routes', () => {
     tvShow: 'Charlie Brown and Snoopy',
     isSidekick: true
   };
-  let odie = {
-    id: expect.any(Number),
-    name: 'Odie',
-    type: 'Dachshund & Terrier Mix',
-    url: '',
-    year: 1978,
-    tvShow: 'The Garfield Show',
-    isSidekick: true
-  };
+  // let odie = {
+  //   id: expect.any(Number),
+  //   name: 'Odie',
+  //   type: 'Dachshund & Terrier Mix',
+  //   url: '',
+  //   year: 1978,
+  //   tvShow: 'The Garfield Show',
+  //   isSidekick: true
+  // };
   let tramp = {
     id: expect.any(Number),
     name: 'Tramp',
@@ -74,6 +74,16 @@ describe('API Routes', () => {
     isSidekick: false
   };
   let goofy = {
+    id: 7,
+    name: 'Goofy',
+    type: 'Coonhound',
+    url: '',
+    year: 1939,
+    tvShow: 'Goof Troup',
+    isSidekick: true
+  };
+
+  let expectedGoofy = {
     id: expect.any(Number),
     name: 'Goofy',
     type: 'Coonhound',
@@ -82,15 +92,15 @@ describe('API Routes', () => {
     tvShow: 'Goof Troup',
     isSidekick: true
   };
-  let scrappyDoo = {
-    id: expect.any(Number),
-    name: 'Scrappy Doo',
-    type: 'Great Dane',
-    url: '',
-    year: 1979,
-    tvShow: 'Scooby Doo',
-    isSidekick: true
-  };
+  // let scrappyDoo = {
+  //   id: expect.any(Number),
+  //   name: 'Scrappy Doo',
+  //   type: 'Great Dane',
+  //   url: '',
+  //   year: 1979,
+  //   tvShow: 'Scooby Doo',
+  //   isSidekick: true
+  // };
 
   it('POST tramp to /api/dogs', async () => {
     const response = await request
@@ -113,44 +123,56 @@ describe('API Routes', () => {
 
   });
 
-
-
-
-  // If a GET request is made to /api/cats, does:
-  // 1) the server respond with status of 200
-  // 2) the body match the expected API data?
-  it.skip('GET /api/dogs', async () => {
-    // act - make the request
-    const response = await request.get('/api/dogs');
-
-    // was response OK (200)?
+  it('DELETE goofy from /api/dogs/:id', async () => {
+    const response = await request.delete(`/api/dogs/${goofy.id}`);
     expect(response.status).toBe(200);
+    expect(response.body).toEqual(expectedGoofy);
 
-    // did it return the data we expected?
-    expect(response.body).toEqual(expectedDogs);
-
+    const getResponse = await request.get('/api/dogs');
+    expect(getResponse.status).toBe(200);
+    expect(getResponse.body).toEqual(expect.arrayContaining([{ 'id': 1, 'isSidekick': true, 'name': 'Scooby Doo', 'tvShow': 'Scooby Doo, Where are you?', 'type': 'Great Dane', 'url': 'scooby-doo.jpeg', 'year': 1969 }, { 'id': 2, 'isSidekick': true, 'name': 'Pluto', 'tvShow': 'Mickey Mouse Clubhouse', 'type': 'Bloodhound', 'url': '', 'year': 1931 }, { 'id': 3, 'isSidekick': false, 'name': 'Bolt', 'tvShow': 'Bolt', 'type': 'German Shepherd', 'url': '', 'year': 2008 }, { 'id': 4, 'isSidekick': true, 'name': 'Snoopy', 'tvShow': 'Charlie Brown and Snoopy', 'type': 'Beagle', 'url': '', 'year': 1978 }, { 'id': 5, 'isSidekick': true, 'name': 'Odie', 'tvShow': 'The Garfield Show', 'type': 'Dachshund & Terrier Mix', 'url': '', 'year': 1978 }, { 'id': 6, 'isSidekick': false, 'name': 'Tramp', 'tvShow': 'The Lady and the Tramp', 'type': 'Schnauzer mix', 'url': '', 'year': 1914 }, { 'id': 8, 'isSidekick': true, 'name': 'Scrappy Doo', 'tvShow': 'Scooby Doo', 'type': 'Great Dane', 'url': '', 'year': 1979 }, { 'id': 9, 'isSidekick': false, 'name': 'Tramp', 'tvShow': 'The Lady and the Tramp', 'type': 'Schnauzer mix', 'url': '', 'year': 1914 }]));
   });
 
-  // it('GET list of dogs from /api/dogs', async () => {
-  //   const r1 = await (await request.post('/api/dogs')).send(snoopy);
-  //   snoopy = r1.body;
-  //   const r2 = await (await request.post('/api/dogs')).send(goofy);
-  //   goofy = r2.body;
-
-  //   const response = await request.get('/api/dogs');
-
-  //   expect(response.status).toBe(200);
-  //   expect(response.body).toEqual(expect.arrayContaining([tramp, snoopy, goofy]));
-  // });
-
-
-
-  // If a GET request is made to /api/cats/:id, does:
-  // 1) the server respond with status of 200
-  // 2) the body match the expected API data for the cat with that id?
-  it.skip('GET /api/dogs/:id', async () => {
-    const response = await request.get('/api/dogs/2');
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(expectedDogs[1]);
-  });
 });
+
+
+
+
+// If a GET request is made to /api/cats, does:
+// 1) the server respond with status of 200
+// 2) the body match the expected API data?
+it.skip('GET /api/dogs', async () => {
+  // act - make the request
+  const response = await request.get('/api/dogs');
+
+  // was response OK (200)?
+  expect(response.status).toBe(200);
+
+  // did it return the data we expected?
+  expect(response.body).toEqual(expectedDogs);
+
+});
+
+// it('GET list of dogs from /api/dogs', async () => {
+//   const r1 = await (await request.post('/api/dogs')).send(snoopy);
+//   snoopy = r1.body;
+//   const r2 = await (await request.post('/api/dogs')).send(goofy);
+//   goofy = r2.body;
+
+//   const response = await request.get('/api/dogs');
+
+//   expect(response.status).toBe(200);
+//   expect(response.body).toEqual(expect.arrayContaining([tramp, snoopy, goofy]));
+// });
+
+
+
+// If a GET request is made to /api/cats/:id, does:
+// 1) the server respond with status of 200
+// 2) the body match the expected API data for the cat with that id?
+it.skip('GET /api/dogs/:id', async () => {
+  const response = await request.get('/api/dogs/2');
+  expect(response.status).toBe(200);
+  expect(response.body).toEqual(expectedDogs[1]);
+});
+// });
