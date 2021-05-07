@@ -62,7 +62,7 @@ describe('API Routes', () => {
     };
 
 
-    it.only('POST snoopy to /api/dogs', async () => {  
+    it('POST snoopy to /api/dogs', async () => {  
       snoopy.userId = user.id;
       const response = await request
         .post('/api/dogs')
@@ -74,16 +74,16 @@ describe('API Routes', () => {
       snoopy = response.body;
     });
 
-    it.skip('PUT updated tramp to /api/dogs/:id', async () => {
-      tramp.tvShow = 'The Lady and the Tramp';
-      tramp.name = 'tramp';
+    it('PUT updated snoopy to /api/dogs/:id', async () => {
+      snoopy.tvShow = 'Charlie Brown and Snoopy';
+      snoopy.name = 'snoopy';
 
       const response = await request
-        .put(`/api/dogs/${tramp.id}`)
-        .send(tramp);
+        .put(`/api/dogs/${snoopy.id}`)
+        .send(snoopy);
       
       expect(response.status).toBe(200);
-      expect(response.body).toEqual(tramp);
+      expect(response.body).toEqual(snoopy);
 
 
     });
