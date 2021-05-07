@@ -24,8 +24,8 @@ async function run() {
         url VARCHAR(1024) NOT NULL,
         year INTEGER NOT NULL,
         tv_show VARCHAR(512) NOT NULL,
-        is_sidekick BOOLEAN DEFAULT FALSE
-        // owner-id INTEGER NOT NULL REFERENCES users(id)
+        is_sidekick BOOLEAN DEFAULT FALSE,
+        user_id INTEGER NOT NULL REFERENCES users(id)
     );
     `);
 
