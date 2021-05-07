@@ -111,10 +111,10 @@ describe('API Routes', () => {
       expect(response.body).toEqual(expect.arrayContaining(expected));
     });
 
-    it.skip('GET snoopy from /api/dogs/:id', async () => {
+    it('GET snoopy from /api/dogs/:id', async () => {
       const response = await request.get(`/api/dogs/${snoopy.id}`);
       expect(response.status).toBe(200);
-      expect(response.body).toEqual(snoopy);
+      expect(response.body).toEqual({ ...snoopy, userName: user.name });
     });
 
 
