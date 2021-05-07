@@ -88,16 +88,27 @@ describe('API Routes', () => {
 
     });
 
-    it.skip('GET list of dogs from /api/dogs', async () => {
-      const r1 = await request.post('/api/dogs').send(snoopy);
-      snoopy = r1.body;
+    it('GET list of dogs from /api/dogs', async () => {
+      tramp.userId = user.id;
+      const r1 = await request.post('/api/dogs').send(tramp);
+      tramp = r1.body;
+
+      goofy.userId = user.id;
       const r2 = await request.post('/api/dogs').send(goofy);
       goofy = r2.body;
 
       const response = await request.get('/api/dogs');
 
       expect(response.status).toBe(200);
-      expect(response.body).toEqual(expect.arrayContaining([tramp, snoopy, goofy]));
+
+      const expected = [tramp, snoopy, goofy].map(dog => {
+        return {
+          userName: user.name,
+          ...dog
+        };
+      });
+
+      expect(response.body).toEqual(expect.arrayContaining(expected));
     });
 
     it.skip('GET snoopy from /api/dogs/:id', async () => {
