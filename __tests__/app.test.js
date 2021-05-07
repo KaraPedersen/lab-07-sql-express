@@ -118,15 +118,16 @@ describe('API Routes', () => {
     });
 
 
-    it.skip('DELETE goofy from /api/dogs/:id', async () => {
+    it('DELETE goofy from /api/dogs/:id', async () => {
       const response = await request.delete(`/api/dogs/${goofy.id}`);
       expect(response.status).toBe(200);
       expect(response.body).toEqual(goofy);
 
       const getResponse = await request.get('/api/dogs');
       expect(getResponse.status).toBe(200);
-      expect(getResponse.body).toEqual(expect.arrayContaining([tramp, snoopy]));
+      expect(getResponse.body.find(dog => dog.id === goofy.id)).toBeUndefined();
     });
+  });
 
 
   
@@ -136,29 +137,29 @@ describe('API Routes', () => {
 
 
 
-    // If a GET request is made to /api/cats, does:
-    // 1) the server respond with status of 200
-    // 2) the body match the expected API data?
-    // it.skip('GET /api/dogs', async () => {
-    //   // act - make the request
-    //   const response = await request.get('/api/dogs');
+  // If a GET request is made to /api/cats, does:
+  // 1) the server respond with status of 200
+  // 2) the body match the expected API data?
+  // it.skip('GET /api/dogs', async () => {
+  //   // act - make the request
+  //   const response = await request.get('/api/dogs');
 
-    //   // was response OK (200)?
-    //   expect(response.status).toBe(200);
+  //   // was response OK (200)?
+  //   expect(response.status).toBe(200);
 
-    //   // did it return the data we expected?
-    //   expect(response.body).toEqual(expectedDogs);
+  //   // did it return the data we expected?
+  //   expect(response.body).toEqual(expectedDogs);
 
-    // });
+  // });
 
-    // it('GET list of dogs from /api/dogs', async () => {
-    //   const r1 = await (await request.post('/api/dogs')).send(snoopy);
-    //   snoopy = r1.body;
-    //   const r2 = await (await request.post('/api/dogs')).send(goofy);
-    //   goofy = r2.body;
+  // it('GET list of dogs from /api/dogs', async () => {
+  //   const r1 = await (await request.post('/api/dogs')).send(snoopy);
+  //   snoopy = r1.body;
+  //   const r2 = await (await request.post('/api/dogs')).send(goofy);
+  //   goofy = r2.body;
 
-    //   const response = await request.get('/api/dogs');
+  //   const response = await request.get('/api/dogs');
 
   //   expect(response.status).toBe(200);  //   expect(response.body).toEqual(expect.arrayContaining([tramp, snoopy, goofy]));
-  });
 });
+// });
