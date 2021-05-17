@@ -4,7 +4,7 @@ const dogs = [
   {
     name: 'Scooby Doo',
     type: 'Great Dane',
-    url: 'scooby-doo.jpeg',
+    url: 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fheroes-and-villians.fandom.com%2Fwiki%2FScooby-Doo&psig=AOvVaw0Yd_P3QBx3mf-RVR4GoRas&ust=1620837246323000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCOCagrWHwvACFQAAAAAdAAAAABA6',
     year: 1969,
     tvShow: 'Scooby Doo, Where are you?',
     isSidekick: true
